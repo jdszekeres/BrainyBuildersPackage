@@ -17,4 +17,4 @@ def favicon(size=""):
 @app.route('/')
 def index():
     return render_template("index.html")
-app.run(debug=True, port=8000)
+app.run(debug=True, host="0.0.0.0", port=8000)

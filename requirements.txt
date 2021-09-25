@@ -1,2 +1,10 @@
+
 Flask
 gunicorn
+oauthlib
+requests
+Flask-SQLAlchemy==2.4.1
+psycopg2
+Flask-HTMLmin
+tabulate
+schedule
