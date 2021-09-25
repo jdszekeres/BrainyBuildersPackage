@@ -1,0 +1,26 @@
+
+echo "starting ✨✨✨✨✨"
+echo "removing junk files🗑"
+find ./ -depth -name ".DS_Store" -exec rm {} \; > /dev/null
+
+minify static/picker.js
+minify static/hr.css
+minify static/rainbow.css
+
+echo "✅ cache and .DS_Store's removed"
+echo "adding files to commit🗃"
+git add . > /dev/null
+echo "✅ all files added"
+echo "commiting 🚚"
+git commit -m "commit" > /dev/null
+echo "✅ commited"
+echo "pushing to heroku✋"
+git push heroku master > /dev/null
+echo "✅ pushed"
+echo "repurging build cache"
+
+echo "✅ purged"
+echo "opening url💻"
+./open
+echo "✅ opened"
+echo "done ✨✨✨✨✨✨✨"
