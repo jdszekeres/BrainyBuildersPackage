@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title> your package currenly does not exist</title>
+
+    </head>
+    <body>
+        <h3>your package currenly does not exist, this is a big problem, add the pacage if this url is frm the QR code you scanned otherwise click <a href="https://www.youtube.com/watch?v=QtBDL8EiNZo">here</a></h3>
+        <form method="post" action="/create/package">
+            <label for="address">full address(address street city, state country zip code)</label>
+            <input type="text" name="adress">
+            <label for="submit">create parcel tracker database enity on brainyBox</label>
+        <input type="submit" name="submit">
+        <input type="hidden" name="id" id="id">
+        </form>
+    </body>
+    
+</html>
+<script>
+            
+    var v = document.URL.split("/")
+    document.getElementById("id").value = v[v.length - 1]
+
+</script>

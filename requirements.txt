@@ -8,3 +8,5 @@ psycopg2
 Flask-HTMLmin
 tabulate
 schedule
+qrcode
+Pillow
