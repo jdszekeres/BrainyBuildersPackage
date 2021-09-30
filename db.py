@@ -9,11 +9,14 @@ del xconn
 def add_package(location, finallocation, id=None):
     conn = psycopg2.connect(url)
     cur = conn.cursor()
-    if id is None and select_package(__selectall()[-1][0]) is not None:
-        print("first")
+    if not len(__selectall()) == 0:
+        if id is None and select_package(__selectall()[-1][0]) is not None:
+            print("first")
+            cur.execute("INSERT INTO packages (date, locations, finaldestination) VALUES ('{date}','{location}','{finaldestination}') RETURNING id;".format(date=datetime.now().strftime("%A %B %d %Y %r"), location=location, finaldestination=finallocation))
+        elif id != None:
+            cur.execute("INSERT INTO packages VALUES ('{id}','{date}','{location}','{finaldestination}') RETURNING id;".format(date=datetime.now().strftime("%A %B %d %Y %r"), location=location, finaldestination=finallocation, id=id))
+    else:
         cur.execute("INSERT INTO packages (date, locations, finaldestination) VALUES ('{date}','{location}','{finaldestination}') RETURNING id;".format(date=datetime.now().strftime("%A %B %d %Y %r"), location=location, finaldestination=finallocation))
-    elif id != None:
-        cur.execute("INSERT INTO packages VALUES ('{id}','{date}','{location}','{finaldestination}') RETURNING id;".format(date=datetime.now().strftime("%A %B %d %Y %r"), location=location, finaldestination=finallocation, id=id))
     conn.commit()
     
     return cur.fetchone()[0]
