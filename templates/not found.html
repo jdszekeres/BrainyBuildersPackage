@@ -1,11 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title> your package currenly does not exist</title>
+        <title>create package</title>
 
     </head>
     <body>
+        {% if notfound %}
         <h3>your package currenly does not exist, this is a big problem, add the pacage if this url is frm the QR code you scanned otherwise click <a href="https://www.youtube.com/watch?v=QtBDL8EiNZo">here</a></h3>
+        {% else %}
+        <h3>Hello, make a package and as qrcode will be generated</h3>
+        {% endif %}
         <form method="post" action="/create/package">
             <label for="address">full address(address street city, state country zip code)</label>
             <input type="text" name="adress">
