@@ -34,7 +34,7 @@ def package(package):
 def create_package():
     if request.method == "POST":
         if request.form.get('id') == 'package':
-            v = db.add_package([], request.form.get('adress')l)
+            v = db.add_package([], request.form.get('adress'))
         else:
             v = db.add_package([], request.form.get('adress'), id=request.form.get('id'))
 
