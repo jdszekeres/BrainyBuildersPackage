@@ -39,3 +39,8 @@ def update_packages(id, location):
     print(x)
     cur.execute(x)
     conn.commit()
+def __package_say_goodlbye(id, locations, finaldestination):
+    conn = psycopg2.connect(url)
+    cur = conn.cursor()
+    cur.execute("UPDATE packages set finaldestination='{loc}' where id='{id}'".format(loc=finaldestination, id=id))
+    conn.commit()

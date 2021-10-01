@@ -33,6 +33,25 @@ def package(package):
 @app.route("/create/package", methods=["POST", "GET"])
 def create_package():
     if request.method == "POST":
+        if request.form.get('check'):
+            db.__package_say_goodlbye(request.form.get("override"), [], request.form.get('adress'))
+            qr = qrcode.QRCode(
+            version=1,
+            error_correction=qrcode.constants.ERROR_CORRECT_L,
+            box_size=10,
+            border=4,
+        )
+            print(request.form.get('override'))
+            pack = request.host_url+"/package/"+str(request.form.get('override'))
+            print(pack)
+            qr.add_data(pack)
+            qr.make(fit=True)
+
+            img = qr.make_image(fill_color="black", back_color="white")
+            buffered = BytesIO()
+            img.save(buffered, format="JPEG")
+            img_str = base64.b64encode(buffered.getvalue())
+            return "<img src=\"data:image/jpeg;base64,{}\">".format(img_str.decode('utf-8')) 
         if request.form.get('id') == 'package':
             v = db.add_package([], request.form.get('adress'))
         else:

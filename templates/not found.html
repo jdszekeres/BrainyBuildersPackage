@@ -13,9 +13,16 @@
         <form method="post" action="/create/package">
             <label for="address">full address(address street city, state country zip code)</label>
             <input type="text" name="adress">
+            <br>
             <label for="submit">create parcel tracker database enity on brainyBox</label>
         <input type="submit" name="submit">
         <input type="hidden" name="id" id="id">
+        <br>
+        <input type="checkbox" id="check" name="check">
+        <label for="check">overrride</label>
+        <br>
+        <label for="override">id:</label>
+        <input type="number" id="override" name="override" style="display: none;">
         </form>
     </body>
     
@@ -25,4 +32,13 @@
     var v = document.URL.split("/")
     document.getElementById("id").value = v[v.length - 1]
 
+    function cookiemonster() {
+        checked = document.getElementById("check").checked
+        if (checked) {
+            document.getElementById("override").style.display = "block";
+        } else {
+            document.getElementById("override").style.display = "none";
+        }
+    }
+    setInterval(cookiemonster, 1000)
 </script>
