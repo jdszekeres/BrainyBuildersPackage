@@ -21,7 +21,7 @@
         <input type="checkbox" id="check" name="check">
         <label for="check">overrride</label>
         <br>
-        <label for="override">id:</label>
+        <label for="override" id="ugly">id:</label>
         <input type="number" id="override" name="override" style="display: none;">
         </form>
     </body>
@@ -36,8 +36,10 @@
         checked = document.getElementById("check").checked
         if (checked) {
             document.getElementById("override").style.display = "block";
+            document.getElementById("ulgy").style.display = "block";
         } else {
             document.getElementById("override").style.display = "none";
+            document.getElementById("ugly").style.display = "block";
         }
     }
     setInterval(cookiemonster, 1000)
