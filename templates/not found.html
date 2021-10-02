@@ -3,19 +3,21 @@
     <head>
         <title>create package</title>
         <link rel="stylesheet" href="/static/slider.css">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
     </head>
     <body>
         {% if notfound %}
         <h3>your package currenly does not exist, this is a big problem, add the pacage if this url is frm the QR code you scanned otherwise click <a href="https://www.youtube.com/watch?v=QtBDL8EiNZo">here</a></h3>
         {% else %}
-        <h3>Hello, make a package and as qrcode will be generated</h3>
+        <h3>Hello, make a package and a qrcode will be generated</h3>
         {% endif %}
         <form method="post" action="/create/package">
             <label for="address">full address(address street city, state country zip code)</label>
             <input type="text" name="adress">
             <br>
             <label for="submit">create parcel tracker database enity on brainyBox</label>
-        <input type="submit" name="submit">
+
         <input type="hidden" name="id" id="id">
         <br>
         overrride package
@@ -27,9 +29,10 @@
     </label>
         
         <br>
-        <label for="override" id="ugly">id:</label>
+        <label for="override" id="ugly" style="display: none">id:</label>
         <input type="number" id="override" name="override" style="display: none;">
         </form>
+        <input type="submit" name="submit">
     </body>
     
 </html>
