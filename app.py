@@ -51,7 +51,7 @@ def create_package():
             buffered = BytesIO()
             img.save(buffered, format="JPEG")
             img_str = base64.b64encode(buffered.getvalue())
-            return "<img src=\"data:image/jpeg;base64,{}\">".format(img_str.decode('utf-8')) 
+            return render_template("confetti.html", hi=img_str.decode('utf-8'))
         if request.form.get('id') == 'package':
             v = db.add_package([], request.form.get('adress'))
         else:
@@ -71,7 +71,7 @@ def create_package():
         buffered = BytesIO()
         img.save(buffered, format="JPEG")
         img_str = base64.b64encode(buffered.getvalue())
-        return "<img src=\"data:image/jpeg;base64,{}\">".format(img_str.decode('utf-8'))
+        return  render_template("confetti.html", hi=img_str.decode('utf-8'))
     else:
         return render_template("not found.html", notfound=False)
 @app.route("/update/<package>", methods=["POST"])

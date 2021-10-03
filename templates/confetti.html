@@ -3,11 +3,15 @@
 <link rel="stylesheet" href="../static/confetti.css">
 <div id="content">
 
-    <div class="buttonContainer">
+    <div class="buttonContainer" style="display: none">
       <button id="stopButton">Stop Confetti</button>
       <button id="startButton">Drop Confetti</button>
     </div>
+    <img src="data:image/jpeg;base64,{{hi|safe}}" style="top:0;left:0">
   </div>
-  <canvas id="canvas"></canvas>
+  
+  <canvas id="canvas"> </canvas>
+  
+
   <script src="../static/confetti.js">
   </script>
