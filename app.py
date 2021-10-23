@@ -4,6 +4,8 @@ import db
 import qrcode
 import base64
 from io import BytesIO
+from geopy.geocoders import Nominatim
+geolocator = Nominatim(user_agent="inportant buisness {-;")
 app = Flask(__name__)
 @app.route("/favicon.ico")
 @app.route("/apple-touch-icon-precomposed.png")
@@ -76,7 +78,7 @@ def create_package():
         return render_template("not found.html", notfound=False)
 @app.route("/update/<package>", methods=["POST"])
 def update_package(package):
-    db.update_packages(package, request.form.get('newlocation'))
+    db.update_packages(package, location = geolocator.reverse(request.form.get('newlocation')).address)
     return redirect(request.referrer)
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8000)

@@ -10,3 +10,4 @@ tabulate
 schedule
 qrcode
 Pillow
+geopy

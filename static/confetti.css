@@ -38,3 +38,10 @@ button {
   padding: 5px 10px;
   font-size: 20px;
 }
+
+
+@media print {
+  canvas{
+     display: none;
+  }
+}

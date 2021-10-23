@@ -18,9 +18,9 @@
     </tr>
 </table>
 <h4>add location</h4>
-<form method="post" action="/update/{{info[0]|safe}}">
-    <input type="text" name="newlocation" required="true">
-    <input type="submit" value="add stop">
+<form method="post" action="/update/{{info[0]|safe}}" id="form">
+    <input type="text" name="newlocation" id="newlocation" required="true">
+    <input type="submit" value="add stop" onclick="cookieexe">
 </form> 
 <br>
 <div class="timeline">
@@ -34,3 +34,18 @@
     {%endfor %}
 </div>
 </body>
+<script>
+    navigator.geolocation.getCurrentPosition(function(position) {
+        document.getElementById("newlocation").style.display = "none";
+        let lat = position.coords.latitude;
+        let long = position.coords.longitude;
+        console.log(lat.toString()+","+long.toString());
+        document.getElementById("newlocation").value = lat.toString()+","+long.toString();
+        q = document.createTextNode("your location was automatically generated via your current location")
+        document.getElementById("form").append(q)
+
+      });
+      function cookieexe() {
+          console.log(document.getElementById("newlocation").value)
+      }
+</script>
