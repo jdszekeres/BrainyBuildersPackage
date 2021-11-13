@@ -78,7 +78,11 @@ def create_package():
         return render_template("not found.html", notfound=False)
 @app.route("/update/<package>", methods=["POST"])
 def update_package(package):
-    db.update_packages(package, location = geolocator.reverse(request.form.get('newlocation')).address)
+    try:
+        v = geolocator.reverse(request.form.get('newlocation')).address
+    except:
+        v = request.form['newlocation']
+    db.update_packages(package, location = v)
     return redirect(request.referrer)
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8000)
