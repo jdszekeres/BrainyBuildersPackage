@@ -25,13 +25,16 @@ def index():
     return render_template("index.html")
 @app.route("/package/<package>")
 def package(package):
+    agent = request.user_agent.string
+    print(agent)
+    mobile = "iphone" in agent.lower() or "android" in agent.lower() or " Opera Mini" in agent or "BB10" in agent
     if request.args.get("override") != None:
             return render_template("not found.html")
     info = db.select_package(package)
     if info == None:
-        return render_template("not found.html", notfound=True)
+        return render_template("not found.html", notfound=True, mobile=mobile)
     print(info)
-    return render_template("package.html", info=info, locations=info[2])
+    return render_template("package.html", info=info, locations=info[2], mobile=mobile)
 @app.route("/create/package", methods=["POST", "GET"])
 def create_package():
     if request.method == "POST":

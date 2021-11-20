@@ -1,14 +1,15 @@
 <!DOCTYPE html>
-<link rel="stylesheet" href="/static/timeline.css">
+<link rel="stylesheet" href="/static/mobile.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <body style="background-color: #7684a3;">
-<table border="1">
+
+{% if not mobile %}
+<table border="1" class="non_mobile">
     <tr>
-        
         <th>id</th>
         <th>time shipped</th>
-
         <th>shipping location</th>
     </tr>
     <tr>
@@ -17,12 +18,24 @@
        <td>{{info[3]}}</td>
     </tr>
 </table>
+{% else %}
+<div class="mobile">
+    id: {{info[0]}}
+    <br>
+    time shipped: {{info[1]}}
+    <br>
+    final destinations: {{info[3]}}
+    <br>
+</div>
+{% endif %}
 <h4>add location</h4>
 <form method="post" action="/update/{{info[0]|safe}}" id="form">
     <input type="text" name="newlocation" id="newlocation" required="true">
     <input type="submit" value="add stop" onclick="cookieexe">
 </form> 
 <br>
+{% if not mobile %}
+<link rel="stylesheet" href="/static/timeline.css">
 <div class="timeline">
     {%for i in locations%}
     <div class="container right">
@@ -32,6 +45,20 @@
         </div>
       </div>
     {%endfor %}
+{% else %}
+<div class="container">
+    <div class="wrapper">
+      <ul class="sessions">
+        {% for i in locations %}
+        <li>
+          <div class="time">{{i["date"]}}</div>
+          <p>{{i["location"]}}</p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+{% endif %}
 </div>
 </body>
 <script>
