@@ -1,6 +1,6 @@
 .timeline {
     position: relative;
-    margin: 13  auto;
+    margin:   auto;
 }
 
 .timeline::after {
