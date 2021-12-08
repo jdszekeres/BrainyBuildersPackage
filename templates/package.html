@@ -87,5 +87,11 @@
     played = true;
     }
 });
+if (navigator.userAgent.includes("Safari")) {
+  var s = new SpeechSynthesisUtterance('Your Package Has Arrived');
+  speechSynthesis.speak(s);
+  played = true;
+  console.log(true);
+}
     
 </script>
