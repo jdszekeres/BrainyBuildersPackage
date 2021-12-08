@@ -60,6 +60,7 @@
   </div>
 {% endif %}
 </div>
+<button id="invis" onclick="{% if info[0] == 14 %}load(){% endif %}" style="display: none"></button>
 </body>
 <script>
     navigator.geolocation.getCurrentPosition(function(position) {
@@ -75,4 +76,16 @@
       function cookieexe() {
           console.log(document.getElementById("newlocation").value)
       }
+</script>
+
+<script type="text/javascript">
+  var played = false;
+  document.addEventListener('click', () => {
+    if (played !== true) {
+    const audio = new Audio('/static/verbose.mp3');
+    audio.play(); 
+    played = true;
+    }
+});
+    
 </script>

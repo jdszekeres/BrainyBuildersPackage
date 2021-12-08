@@ -95,5 +95,8 @@ def error500(e):
     return """<p><span style="color: #800000;">roses are red</span></p>
     <p><span style="color: #00ffff;">violets are blue</span></p>
     <p>{} in line 10,042</p>""".format(e)
+def printua():
+    print(request.user_agent)
+app.before_request(printua)
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0", port=8000)
