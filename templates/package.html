@@ -87,7 +87,7 @@
     played = true;
     }
 });
-if (navigator.userAgent.includes("Safari")) {
+if (navigator.userAgent.includes("Safari") && !navigator.userAgent.includes('Chrome')) {
   var s = new SpeechSynthesisUtterance('Your Package Has Arrived');
   speechSynthesis.speak(s);
   played = true;
