@@ -81,4 +81,7 @@ ul, li {
     p {
       font-size: 0.9rem;
     }
+    span {
+      font-size: 15px;
+    }
   }
