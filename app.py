@@ -26,7 +26,6 @@ def index():
 @app.route("/package/<package>")
 def package(package):
     agent = request.user_agent.string
-    print(agent)
     mobile = "iphone" in agent.lower() or "android" in agent.lower() or " Opera Mini" in agent or "BB10" in agent
     if request.args.get("override") != None:
             return render_template("not found.html")

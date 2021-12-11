@@ -118,3 +118,7 @@ body {
 span {
     font-size: 25px;
 }
+
+::placeholder, ::-moz-placeholder {
+    font-size: 5rem
+}

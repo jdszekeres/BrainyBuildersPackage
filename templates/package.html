@@ -8,7 +8,7 @@
 
 <button id="invis" class="text"><h1>Hello From The Brainy Builder</h1></button>
 {% if not mobile %}
-<table border="1" class="non_mobile">
+<table border="1" class="non_mobile table" style="width: 125%">
     <tr>
         <th>id</th>
         <th>time shipped</th>
@@ -22,17 +22,16 @@
 </table>
 {% else %}
 <div class="mobile">
-    id: {{info[0]}}
+  <p>id: {{info[0]}}</p>
     <br>
-    time shipped: {{info[1]}}
+    <p>time shipped: {{info[1]}}</p>
     <br>
-    final destinations: {{info[3]}}
+    <p>final destinations: {{info[3]}}</p>
     <br>
 </div>
 {% endif %}
-<h4>add location</h4>
 <form method="post" action="/update/{{info[0]|safe}}" id="form">
-    <input type="text" name="newlocation" id="newlocation" required="true">
+    <input type="text" name="newlocation" id="newlocation" required="true" placeholder="Add stop">
     <input type="submit" value="add stop" onclick="cookieexe">
 </form> 
 <br>
@@ -82,6 +81,7 @@
 
 <script type="text/javascript">
   var played = false;
+  {% if info[0] == 14 %}
   document.addEventListener('click', () => {
     if (played !== true) {
     const audio = new Audio('/static/verbose.mp3');
@@ -107,7 +107,7 @@ function load() {
   audio.volume = 1;
   audio.play();
 }
-
+{% endif %}
 
 function generateRainbowText(element) {
   var text = element.innerText;
