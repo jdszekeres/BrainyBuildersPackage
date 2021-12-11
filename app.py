@@ -32,7 +32,6 @@ def package(package):
     info = db.select_package(package)
     if info == None:
         return render_template("not found.html", notfound=True, mobile=mobile)
-    print(info)
     return render_template("package.html", info=info, locations=info[2], mobile=mobile)
 @app.route("/create/package", methods=["POST", "GET"])
 def create_package():

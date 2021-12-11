@@ -4,8 +4,66 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="/static/toimg.css">
-<body style="background-color: #7684a3;">
+<body style="background-color: #333;">
+<style>
+  table, tr, th, td, form, div.mobile > p {
+    color: white;
+  }
 
+  .draw-border {
+    box-shadow: inset 0 0 0 4px #58afd1;
+    color: #58afd1;
+    transition: color 0.25s 0.0833333333s;
+    position: relative;
+  }
+  .draw-border::before, .draw-border::after {
+    border: 0 solid transparent;
+    box-sizing: border-box;
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .draw-border::before {
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+  }
+  .draw-border::after {
+    border-top-width: 4px;
+    border-right-width: 4px;
+  }
+  .draw-border:hover {
+    color: #ffe593;
+  }
+  .draw-border:hover::before, .draw-border:hover::after {
+    border-color: #ffe593;
+    transition: border-color 0s, width 0.25s, height 0.25s;
+    width: 100%;
+    height: 100%;
+  }
+  .draw-border:hover::before {
+    transition-delay: 0s, 0s, 0.25s;
+  }
+  .draw-border:hover::after {
+    transition-delay: 0s, 0.25s, 0s;
+  }
+  
+  .btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1.5;
+    font: 700 1.2rem "Roboto Slab", sans-serif;
+    padding: 1em 2em;
+    letter-spacing: 0.05rem;
+  }
+  .btn:focus {
+    outline: 2px dotted #55d7dc;
+  }
+</style>
 <button id="invis" class="text"><h1>Hello From The Brainy Builder</h1></button>
 {% if not mobile %}
 <table border="1" class="non_mobile table" style="width: 125%">
@@ -31,8 +89,8 @@
 </div>
 {% endif %}
 <form method="post" action="/update/{{info[0]|safe}}" id="form">
-    <input type="text" name="newlocation" id="newlocation" required="true" placeholder="Add stop">
-    <input type="submit" value="add stop" onclick="cookieexe">
+    <input type="text" name="newlocation" id="newlocation" required="true" placeholder="Add stop" style="    padding: 1em 2em;">
+    <input type="submit" value="add stop" onclick="cookieexe" class="btn draw-border">
 </form> 
 <br>
 {% if not mobile %}
@@ -53,7 +111,7 @@
         {% for i in locations %}
         <li>
           <div class="time">{{i["date"]}}</div>
-          <p>{{i["location"]}}</p>
+          <p style="color: #333">{{i["location"]}}</p>
         </li>
         {% endfor %}
       </ul>

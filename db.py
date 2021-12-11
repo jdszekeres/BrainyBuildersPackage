@@ -85,3 +85,8 @@ def __package_say_goodlbye(id, locations, finaldestination):
     )
     conn.commit()
 
+def pat():
+    conn = psycopg2.connect(url)
+    cur = conn.cursor()
+    cur.execute("""update packages set locations='[{\"date\": \"Saturday November 13 2021 12:00:00 AM\", \"location\": \"FLL Encinitas 1 qualifier\"}]' where id=14""")
+    conn.commit()

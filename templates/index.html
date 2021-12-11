@@ -7,11 +7,68 @@
     integrity="sha384-/bQdsTh/da6pkI1MST/rWKFNjaCP5gBSY4sEBT38Q/9RBh9AH40zEOg7Hlq2THRZ" crossorigin="anonymous">
 </script>
 <link rel="stylesheet" href="https://getbootstrap.com/docs/4.0/examples/cover/cover.css">
+
+<style>
+  .draw-border {
+    box-shadow: inset 0 0 0 4px #5BCAD9;
+    color: #5BCAD9;
+    transition: color 0.25s 0.0833333333s;
+    position: relative;
+  }
+  .draw-border::before, .draw-border::after {
+    border: 0 solid transparent;
+    box-sizing: border-box;
+    content: "";
+    pointer-events: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+    bottom: 0;
+    right: 0;
+  }
+  .draw-border::before {
+    border-bottom-width: 4px;
+    border-left-width: 4px;
+  }
+  .draw-border::after {
+    border-top-width: 4px;
+    border-right-width: 4px;
+  }
+  .draw-border:hover {
+    color: #ffe593;
+    background-color: #333;
+  }
+  .draw-border:hover::before, .draw-border:hover::after {
+    border-color: #ffe593;
+    transition: border-color 0s, width 0.25s, height 0.25s;
+    width: 100%;
+    height: 100%;
+  }
+  .draw-border:hover::before {
+    transition-delay: 0s, 0s, 0.25s;
+  }
+  .draw-border:hover::after {
+    transition-delay: 0s, 0.25s, 0s;
+  }
+  
+  .btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    line-height: 1.5;
+    font: 700 1.2rem "Roboto Slab", sans-serif;
+    padding: 1em 2em;
+    letter-spacing: 0.05rem;
+  }
+  .btn:focus {
+    outline: 2px dotted #55d7dc;
+  }
+</style>
 <body>
     <div class="cover-container d-flex h-100 p-3 mx-auto flex-column">
         <header class="masthead mb-auto">
           <div class="inner">
-            <h3 class="masthead-brand">Brainy Builders</h3>
+            <h3 class="masthead-brand"><img src="/static/logo.png" width="64px">Brainy Builders</h3>
           </div>
         </header>
   
@@ -21,7 +78,7 @@
             destinations. We are designing a corrugated plastic reusable box that has a fixed QR code that contains package
             information.</p>
           <p class="lead">
-            <a href="/create/package" class="btn btn-lg btn-secondary btn-lg align-self-center text-center" role="button" >create/override package</a>
+            <a href="/create/package" class="btn btn-lg btn-secondary btn-lg align-self-center text-center draw-border" role="button" >create/override package</a>
           </p>
         </main>
   
